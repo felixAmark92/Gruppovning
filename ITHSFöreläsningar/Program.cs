@@ -4,9 +4,7 @@
 Console.Write("Please enter the amount of players: ");
 
 string input = Console.ReadLine();
-
 int amountOfPlayers = 0;
-
 
 while (!int.TryParse(input, out amountOfPlayers))
 {
@@ -14,13 +12,8 @@ while (!int.TryParse(input, out amountOfPlayers))
     input = Console.ReadLine();
 }
 
-
-
-
 string[] players = new string[amountOfPlayers];
-
 int[] playersScores = new int[amountOfPlayers];
-
 int[] playersRolls;
 
 for (int i = 0; i < amountOfPlayers; i++)
@@ -29,12 +22,10 @@ for (int i = 0; i < amountOfPlayers; i++)
     players[i] = Console.ReadLine();
 }
 
-
-
+//Start of game
 for (int k = 0; k < 6; k++)
 {
     playersRolls = MakeDiceRolls(amountOfPlayers);
-
     Console.WriteLine("Rolls:");
     for (int i = 0; i < amountOfPlayers; i++)
     {
@@ -57,13 +48,12 @@ DeclareWinner();
 
 
 
-
 int[] MakeDiceRolls(int amount)
 {
     int[] rolls = new int[amount];
     var random = new Random();
 
-    for (int i = 0;i < amount;i++)
+    for (int i = 0; i < amount; i++)
     {
         rolls[i] = random.Next(1, 7);
     }
@@ -81,7 +71,7 @@ void DeclarePoints()
     for (int i = 0; i < 3; i++)
     {
         highestRoll = 0;
-        for (int j = 0; j < playersRolls.Length; j++) 
+        for (int j = 0; j < playersRolls.Length; j++)
         {
             if (playersRolls[j] > highestRoll)
             {
@@ -99,10 +89,8 @@ void DeclarePoints()
                 playersScores[j] += point;
                 playersRolls[j] = 0;
             }
-
         }
         point -= 2;
-
     }
 }
 
@@ -118,12 +106,6 @@ void DeclareWinner()
             winnerIndex = i;
             highestScore = playersScores[i];
         }
-        
     }
     Console.WriteLine("Winner: " + players[winnerIndex]);
 }
-
-
-
-
-
